@@ -1,5 +1,5 @@
 class shorewall::rules::mysql {
-  $mysql_zone ? { '' => 'net', default => $mysql_zone }
+  $mysql_zone = $mysql_zone ? { '' => 'net', default => $mysql_zone }
 
   shorewall::rule {
     "$mysql_zone-me-tcp_mysql":
