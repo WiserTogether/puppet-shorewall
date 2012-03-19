@@ -1,7 +1,7 @@
 class shorewall { 
 
-  include common::moduledir
-  module_dir { "shorewall": }
+  #include common::moduledir
+  #module_dir { "shorewall": }
 
   case $operatingsystem {
     gentoo: { include shorewall::gentoo }
@@ -9,7 +9,7 @@ class shorewall {
       include shorewall::debian
       $dist_tor_user = 'debian-tor'
     }
-    centos: { include shorewall::base }
+    centos,redhat: { include shorewall::base }
     ubuntu: {
     case $lsbdistcodename {
       karmic: { include shorewall::ubuntu::karmic }
